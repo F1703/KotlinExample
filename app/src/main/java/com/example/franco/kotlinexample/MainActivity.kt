@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
     private var textName: TextView ?=null
     private var textAge: TextView?=null
 
-    private var ejecutar: Button ?=null
+    private var ejecutar: Button?=null
 
     private var name: String?=null
     private var age: String?=null
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
         operacion()
     }
 
-    fun operacion(){
+    private fun operacion(){
         //Toast.makeText(this,s.toString(),Toast.LENGTH_SHORT).show()
 
         // a las variables le asigno lo que obtengo de los EditText
@@ -81,6 +81,16 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
         //validar los datos
         if (name !="") textName?.text = name
         if (age != "") textAge?.text = age
+    }
+
+    private  fun operacion02(){
+        var cadena: String = ""         // var cadena = ""
+        var entero: Int = 0             // var entero = 0
+        var doble: Double= 0.0          // var doble  = 0.0
+        var valor: Boolean = true       // var valor  = true
+        var char: Char = 'k'            // var char   = 'k'
+        var flo: Float = 5.2f           // var flo    = 5.2f
+
     }
 
 }
