@@ -86,7 +86,11 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
 
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-        Toast.makeText(this,"Ha seleccionado una opcion",Toast.LENGTH_SHORT).show()
+        when(buttonView!!.id){
+            R.id.radioButton_M -> if (isChecked) Toast.makeText(this,"Ha seleccionado Masculino",Toast.LENGTH_SHORT).show()
+            R.id.radioButton_F -> if (isChecked) Toast.makeText(this,"Ha seleccionado Femenino",Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun operacion(){
