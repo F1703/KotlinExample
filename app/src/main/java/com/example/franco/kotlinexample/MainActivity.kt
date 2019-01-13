@@ -53,10 +53,12 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
         radioM = findViewById(R.id.radioButton_M)
         radioF = findViewById(R.id.radioButton_F)
 
-        radioM!!.setOnCheckedChangeListener(this)
-        radioF!!.setOnCheckedChangeListener(this)
+        //radioM!!.setOnCheckedChangeListener(this)
+        //radioF!!.setOnCheckedChangeListener(this)
 
-        depurar()
+        radioM!!.setOnClickListener(this)
+        radioF!!.setOnClickListener(this)
+        //depurar()
     }
 
 
@@ -81,7 +83,12 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
 
     //button
     override fun onClick(v: View?) {
-        operacion03()
+        //operacion03()
+        when(v!!.id){ //id de tipo entero con !!
+            R.id.button_Ejecutar -> operacion03()
+            R.id.radioButton_M ->  Toast.makeText(this,"Ha seleccionado Masculino",Toast.LENGTH_SHORT).show()
+            R.id.radioButton_F ->  Toast.makeText(this,"Ha seleccionado Femenino",Toast.LENGTH_SHORT).show()
+        }
     }
 
 
