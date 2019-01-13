@@ -18,7 +18,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editName = findViewById(R.id.editText_Name)
+        editName = findViewById(R.id.editText_Name) as EditText
+        editAge = findViewById(R.id.editText_Age) as EditText
+        
 
 
 
