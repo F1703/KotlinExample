@@ -28,6 +28,15 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
     private var radioF: RadioButton?=null
 
     private var mensaje = ""
+    private var genero = ""
+
+    internal var lvsLista: ListView?=null  // otras clases tendran acceso a este objeto declarado como internal
+    internal var nombre: Array<String>?=null
+    internal var edad: Array<String>?=null
+    internal var sexo: Array<String>?=null
+
+    private var num = 10
+    private  var count =1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +68,12 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
         radioM!!.setOnClickListener(this)
         radioF!!.setOnClickListener(this)
         //depurar()
+
+        lvsLista=findViewById(R.id.listView_lista)
+        nombre= Array<String>(num,{""})
+        edad= Array<String>(num,{""})
+        sexo= Array<String>(num,{""})
+        operacion04()
     }
 
 
@@ -85,7 +100,8 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
     override fun onClick(v: View?) {
         //operacion03()
         when(v!!.id){ //id de tipo entero con !!
-            R.id.button_Ejecutar -> operacion03()
+            //R.id.button_Ejecutar -> operacion03()
+            R.id.button_Ejecutar -> operacion04()
             R.id.radioButton_M ->  Toast.makeText(this,"Ha seleccionado Masculino",Toast.LENGTH_SHORT).show()
             R.id.radioButton_F ->  Toast.makeText(this,"Ha seleccionado Femenino",Toast.LENGTH_SHORT).show()
         }
@@ -150,6 +166,42 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
         when(valor){
             "Kotlin"-> mensaje = valor
             "Java"  -> mensaje = valor
+        }
+    }
+
+
+    private fun operacion04(){
+        name = editName?.text.toString()
+        age= editAge?.text.toString()
+
+        if (name?.equals("") ?: (""===null)){
+            editName!!.requestFocus()
+        }else {
+            textName?.text = name
+            if (age?.equals("") ?: ("" ===null)){
+                editAge!!.requestFocus()
+            }else{
+                if (radioM!!.isChecked || radioF!!.isChecked){
+                    var nombres: Array<String>
+                    for(i in 0..num) // desde 0 hasta 10
+                     {
+                         if (nombre?.get(i).equals("")){
+                             nombre?.set(i,name as String)
+                             edad?.set(i,age as String)
+                             sexo?.set(i,genero)
+                             nombres= Array<String>(count,{""})
+                             for (j in 0..i){
+                                 nombres[j] = nombre?.get(j) as String
+                             }
+                             val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,nombres)
+                             lvsLista!!.adapter = adapter
+                             count++
+                             break
+                         }
+                     }
+
+                }
+            }
         }
     }
 
