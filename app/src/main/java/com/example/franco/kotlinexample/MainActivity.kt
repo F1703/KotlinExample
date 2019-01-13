@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
     private var radioM: RadioButton?=null
     private var radioF: RadioButton?=null
 
+    private var mensaje = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
         radioM!!.setOnCheckedChangeListener(this)
         radioF!!.setOnCheckedChangeListener(this)
 
+        depurar()
     }
 
 
@@ -128,6 +130,15 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
             }else{
                 textAge?.text =age
             }
+        }
+    }
+
+    private fun depurar(){
+        var valor = "Kotlin"
+
+        when(valor){
+            "Kotlin"-> mensaje = valor
+            "Java"  -> mensaje = valor
         }
     }
 
