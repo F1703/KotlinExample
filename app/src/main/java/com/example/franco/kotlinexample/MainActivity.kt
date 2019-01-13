@@ -6,13 +6,10 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import org.w3c.dom.Text
 
-class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
+class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
 
 
@@ -26,6 +23,9 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
 
     private var name: String?=null
     private var age: String?=null
+
+    private var radioM: RadioButton?=null
+    private var radioF: RadioButton?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +49,11 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
 
         editName!!.inputType =InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
 
+        radioM = findViewById(R.id.radioButton_M)
+        radioF = findViewById(R.id.radioButton_F)
+
+        radioM!!.setOnCheckedChangeListener(this)
+        radioF!!.setOnCheckedChangeListener(this)
 
     }
 
@@ -75,6 +80,11 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
     //button
     override fun onClick(v: View?) {
         operacion03()
+    }
+
+
+    override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+        Toast.makeText(this,"Ha seleccionado una opcion",Toast.LENGTH_SHORT).show()
     }
 
     private fun operacion(){
