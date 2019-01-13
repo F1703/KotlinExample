@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         editName = findViewById(R.id.editText_Name)
-        
+
 
 
     }
