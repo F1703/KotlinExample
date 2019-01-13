@@ -3,6 +3,7 @@ package com.example.franco.kotlinexample
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
@@ -45,6 +46,10 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
 
         //invocar funciones para el button
         ejecutar!!.setOnClickListener(this)
+
+        editName!!.inputType =InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+
+        
     }
 
 
@@ -57,13 +62,19 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         //operacion()
+        name = editName?.text.toString()
+        if (name?.equals("") ?: (""===null)){
+            editName!!.inputType =InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+        }else{
+            editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
+        }
     }
 
 
 
     //button
     override fun onClick(v: View?) {
-        operacion()
+        operacion03()
     }
 
     private fun operacion(){
@@ -91,6 +102,23 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
         var char: Char = 'k'            // var char   = 'k'
         var flo: Float = 5.2f           // var flo    = 5.2f
 
+        val d = null?:4
+    }
+
+    private fun operacion03(){
+        name = editName?.text.toString()
+        age= editAge?.text.toString()
+
+        if (name?.equals("") ?: (""===null)){
+            editName!!.requestFocus()
+        }else {
+            textName?.text = name
+            if (age?.equals("") ?: ("" ===null)){
+                editAge!!.requestFocus()
+            }else{
+                textAge?.text =age
+            }
+        }
     }
 
 }
