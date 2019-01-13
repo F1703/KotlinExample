@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editName = findViewById(R.id.editText_Name) as EditText
+        editName = findViewById(R.id.editText_Name)
         editAge = findViewById(R.id.editText_Age) as EditText
 
         textName=findViewById(R.id.textView_Name) as TextView
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
 
         editName!!.inputType =InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
 
-        
+
     }
 
 
